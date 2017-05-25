@@ -12,20 +12,19 @@ import com.jeff.kotliontest.adapter.java.HomeAdapter
 import com.jeff.kotliontest.bean.Person
 import com.jeff.kotliontest.R
 import com.jeff.kotliontest.adapter.java.HomeKtAdapter
-import java.util.*
 
 class HomeFragment : Fragment() {
 
     private var persons: List<Person>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_home,container,false)
+        return inflater!!.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getData()
-        val recyclerView : RecyclerView = view!!.findViewById(R.id.recycler_view) as RecyclerView
+        val recyclerView: RecyclerView = view!!.findViewById(R.id.recycler_view) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(activity!!)
         recyclerView.addItemDecoration(DividerDecoration(activity))
         //java写的适配器
@@ -39,15 +38,17 @@ class HomeFragment : Fragment() {
      * mock数据
      */
     private fun getData(): List<Person> {
-        persons = ArrayList<Person>()
-        (persons as ArrayList<Person>).add(Person("html", 12))
-        (persons as ArrayList<Person>).add(Person("kotlin", 36))
-        (persons as ArrayList<Person>).add(Person("java", 12))
-        (persons as ArrayList<Person>).add(Person(null, 12))
-        (persons as ArrayList<Person>).add(Person("android", 12))
-        (persons as ArrayList<Person>).add(Person("ios", 12))
-        (persons as ArrayList<Person>).add(Person("c++", 12))
-        (persons as ArrayList<Person>).add(Person("php", 12))
-        return  (persons as ArrayList<Person>)
+        persons = listOf(
+                Person("android", 12),
+                Person("html", 130),
+                Person("kotlin", 5),
+                Person("java", 12),
+                Person(null, 12),
+                Person("android", 12),
+                Person("ios", 12),
+                Person("c++", 12),
+                Person("php", 12)
+        )
+        return persons as List<Person>
     }
 }
